@@ -1,1 +1,15 @@
-
+{
+  "environment": "sandbox",
+  "database": {
+    "host": "sandbox.divido.com",
+    "port": 3306,
+    "username": "divido",
+    "password": "divido"
+  },
+  "cache": {
+    "redis": {
+      "host": "sandbox.divido.com",
+      "port": 6379
+    }
+  }
+}
