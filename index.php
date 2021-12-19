@@ -35,9 +35,10 @@ class JSONHandler {
 }
 
 // Load files and generate common configuration file
-$files = ["File1.json","File2.json","File3.json"];
+$files = ["fixtures/config1.json","fixtures/config2.json","fixtures/config3.json","fixtures/config4.json"];
 
 $obj = new JSONHandler();
 $json = $obj->mergeJSON($files);
 
+// Display output
 print_r($json);
