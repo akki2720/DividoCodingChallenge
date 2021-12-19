@@ -2,19 +2,43 @@
 
 class JSONHandler {
 
-    // Get JSON file content
-    function getJSONFile($file) {
+    /**
+     *
+     * Get JSON file content
+     *
+     * @param   file  $files
+     * @return  string
+     *
+     */
+    function getJSONFile($file)
+    {
         return file_get_contents($file);
     }
   
-    // Check JSON file valid or not
-    function isValidJSON($string) {
+    /**
+     *
+     * Check JSON file valid or not
+     *
+     * @param   string  $string
+     * @return  Exception
+     *
+     */
+    function isValidJSON($string)
+    {
         json_decode($string);
         return json_last_error() === JSON_ERROR_NONE;
     }
   
-    // Merge JSON content of all valid files
-    function mergeJSON($files){
+    /**
+     *
+     * Merge JSON content of all valid files
+     *
+     * @param   file  $files
+     * @return  json
+     *
+     */
+    function mergeJSON($files)
+    {
         $finalJson = [];
         for($file = 0; $file<count($files); $file++){
             $json = self::getJSONFile($files[$file]);
@@ -31,6 +55,19 @@ class JSONHandler {
         }
         return json_encode($finalJson);
     }
+
+    /**
+     *
+     * Display output of all JSON
+     *
+     * @param   json  $json
+     * @return  array
+     *
+     */
+    function display($json)
+    {
+        print_r($json);
+    }
   
 }
 
@@ -41,4 +78,4 @@ $obj = new JSONHandler();
 $json = $obj->mergeJSON($files);
 
 // Display output
-print_r($json);
+$obj->display($json);
