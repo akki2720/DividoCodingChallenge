@@ -84,7 +84,12 @@ class JSONHandler {
                     $filterJsonContent = $filterJsonContent[$valueToGet[$i]];
                 }
                 // Show required value of config file
-                print_r(json_encode($filterJsonContent));
+                if (isset($filterJsonContent)) {
+                    print_r(json_encode($filterJsonContent));
+                } else {
+                    echo "configuration does not exist.";
+                }
+                
             } else {
                 echo $fileName . " is invalid json file.</br>";
             }
@@ -100,4 +105,4 @@ $json = $obj->mergeJSON($files);
 // Display output
 $obj->display($json);
 // Get required configuration value
-$obj->getConfigValue('fixtures/config1.json', 'database.host');
+$obj->getConfigValue('fixtures/config1.json', 'database');
